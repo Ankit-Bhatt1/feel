@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 const fugaz = Fugaz_One({ subsets: ['latin'] , weight: ['400']});
 
 export const metadata = {
-  title: "Brodle",
+  title: "Feel",
   description: "Mood Tracker !!",
 };
 
