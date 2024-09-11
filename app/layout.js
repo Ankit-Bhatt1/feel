@@ -3,6 +3,7 @@ import "./globals.css";
 import { Fugaz_One, Inter } from '@next/font/google';
 import Button from "@/components/Button";
 import Link from "next/link";
+import { AuthProvider } from "@/context/AuthContext";
 
 const inter = Inter({ subsets: ['latin'] });
 const fugaz = Fugaz_One({ subsets: ['latin'] , weight: ['400']});
@@ -35,11 +36,13 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <AuthProvider>
       <body className={'w-full max-w-[1000px] mx-auto text-sm sm:text-base min-h-screen flex flex-col ' + inter.className}>
         {header}
         {children}
         {footer}
       </body>
+      </AuthProvider>
     </html>
   );
 }

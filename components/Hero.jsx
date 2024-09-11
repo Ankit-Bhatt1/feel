@@ -3,6 +3,7 @@ import React from 'react'
 const fugaz = Fugaz_One({ subsets: ['latin'] , weight: ['400']});
 import Button from './Button';
 import Calender from './Calender';
+import Link from 'next/link';
 const Hero = () => {
   return (
     <div className = 'py-10 sm:py-14 mid:py-20'>
@@ -14,8 +15,12 @@ const Hero = () => {
       </h2>
       <p className={'mt-6 text-lg sm:text-xl md:text-2xl text-center font-sans '}>Create your mood record and see how you feel on <span className='font-medium '>" every day of every year ".</span></p>
       <div className='py-5 grid grid-cols-2 gap-4 w-fit mx-auto'>
-        <Button text='SignUp'/>
+        <Link href={'/dashboard'}>
+          <Button text='SignUp'/>
+        </Link>
+        <Link href={'/dashboard'}>
         <Button text='Login' dark/>
+        </Link>
       </div>
       <Calender demo/>
     </div>
