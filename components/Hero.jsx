@@ -14,7 +14,8 @@ const Hero = () => {
       <h2 className={'mt-3 text-2xl sm:text-2xl mid:text-6xl text-center ' + fugaz.className}>
         <span>😀 😢 😡 😱 😴 😐 😔 😂 🤔</span>
       </h2>
-      <p className={'mt-6 text-lg sm:text-xl md:text-2xl text-center font-sans '}>Create your mood record and see how you feel on <span className='font-medium '>" every day of every year ".</span></p>
+      {/* <p className={'mt-6 text-lg sm:text-xl md:text-2xl text-center font-sans '}>Create your mood record and see how you feel on <span className='font-medium '>" every day of every year ".</span></p> */}
+      <p className={'mt-6 text-lg sm:text-xl md:text-2xl text-center font-sans '}>Create your mood record and see how you feel on <span className='font-medium '>&quot; every day of every year &quot;.</span></p>
       <CallToAction/>
       <Calender demo/>
     </div>
