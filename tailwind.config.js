@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'spinner': '24px',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -14,4 +17,5 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}
+

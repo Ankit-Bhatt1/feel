@@ -13,7 +13,9 @@ export function useAuth(){          // useAuth is a custom HOOK
 }
 
 // Why we using this export function useAuth ?
+
 // <--- ANS --->
+
 // Providing Contextual Data: The useAuth function simplifies the process of accessing the value of the 
 // AuthContext context within components. Instead of manually passing the context value as a prop to 
 // each component, components can simply call useAuth to obtain the context value.
@@ -41,7 +43,7 @@ export function AuthProvider({children}){
     }
 
     function logout(){
-        setuserDataObj({});
+        setuserDataObj(null);
         setcurrentUser(null);
         return signOut(auth);
     }
@@ -63,6 +65,7 @@ export function AuthProvider({children}){
                 const docRef = doc(db, 'users', user.uid)
                 const docSnap = await getDoc(docRef)
                 let firebaseData = {}
+                
                 if(docSnap.exists()){
                     console.log('find user data')
                     firebaseData= docSnap.data()
@@ -83,6 +86,7 @@ export function AuthProvider({children}){
     const value = {
         currentUser,
         userDataObj,
+        setuserDataObj,
         signup,
         login,
         logout,

@@ -2,25 +2,31 @@ import React from 'react'
 import Main from '@/components/Main';
 import Dashboard from '@/components/Dashboard';
 import Login from '@/components/Login';
+import { useAuth } from '@/context/AuthContext';
+import Loading from '@/components/Loading';
 
 export const metadata = {
-    title: "Brodle ⋅ Dashboard",
+    title: "Feel ⋅ Dashboard",
   };
 
   const page = () => {
-    const isAuthenticated = true ;
+    // const {currentUser,loading} = useAuth
 
-    let children = (
-        <Login/>
-      )
+  //   let children = (
+  //       <Login/>
+  //     )
 
-    if(isAuthenticated){
-        children = (<Dashboard/>)
-      }
+  //   if(loading){
+  //     children=(<Loading/>)
+  //   }
+
+  //   if(currentUser){
+  //       children = (<Dashboard/>)
+  //     }
 
     return (
         <Main>
-          {children}
+          <Dashboard/>
         </Main>
   )
 }

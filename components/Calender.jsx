@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { baseRating, gradients } from '@/utils/data';
 
 const months = {
@@ -16,10 +17,6 @@ const months = {
   "December": "Dec"
 };
 
-const demoData = {
-  "15": 2, "16": 4, "17": 1, "18": 3, "19": 5,
-  "20": 2, "21": 4, "22": 1, "23": 3, "24": 5,
-}
 
 const now = new Date();
 
@@ -34,12 +31,25 @@ const dayList = [
 ];
 
 const Calender = (props) => {
-  const {demo} = props
-  const year = 2024;
-  const month = 'September';
-  const monthNow = new Date(year, Object.keys(months).indexOf(month),1)
+  const now = new Date();
+  const currMonth = now.getMonth()
+  const [selectedMonth, setSelectedMonth] = useState(Object.keys(months)[currMonth]);
+  
+  const[selectedYear,setSelectedYear] = useState(now.getFullYear())
+
+  function handleIncrementMonth(){
+    // sets value +1 -1 
+    // if we hit bounds the  months, then we can adjust that is displayed instead
+  }
+  
+  console.log("selected month ", selectedMonth)
+  
+  const {demo , data , handleSetMood} = props
+  // const year = 2024;
+  // const month = 'September';
+  const monthNow = new Date(selectedYear, Object.keys(months).indexOf(selectedMonth),1)
   const firstDayofMonth = monthNow.getDay();
-  const DaysInMonth = new Date(year, Object.keys(months).indexOf(month)+1,0).getDate();
+  const DaysInMonth = new Date(selectedYear, Object.keys(months).indexOf(selectedMonth)+1,0).getDate();
   // const totalDaysInMonth = DaysInMonth.getDate();
   const daysToDisplay = firstDayofMonth + DaysInMonth;
 
