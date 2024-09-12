@@ -1,4 +1,4 @@
-# ![Feel - Mood Tracker](./assets/first.png)
+# ![Feel - Mood Tracker](assets/first.PNG)
 
 # Feel - Mood Tracker
 
