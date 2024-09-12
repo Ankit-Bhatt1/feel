@@ -5,6 +5,7 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import { AuthProvider } from "@/context/AuthContext";
 import Hess from "./Hess";
+import Logout from "@/components/Logout";
 
 const inter = Inter({ subsets: ['latin'] });
 const fugaz = Fugaz_One({ subsets: ['latin'] , weight: ['400']});
@@ -22,10 +23,7 @@ export default function RootLayout({ children }) {
           Feel
         </h1>
       </Link>
-      
-      <div>
-        PLACEHOLDER
-      </div>
+      <Logout/>
     </header>
   )
 

@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Fugaz_One } from '@next/font/google';
 import Calender from './Calender';
 import { useAuth } from '@/context/AuthContext';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc} from 'firebase/firestore';
+import { db } from '@/firebase';
 import Loading from './Loading';
 import Login from './Login';
 
@@ -13,22 +14,40 @@ const fugaz = Fugaz_One({ subsets: ['latin'] , weight: ['400']});
 const Dashboard = () => {
   const {currentUser , userDataObj, setuserDataObj, loading} = useAuth()
   const [data,setData] = useState({})
+  const now = new Date();
 
   function countValues(){
+    let total_number_of_days = 0;
+    let sum_moods = 0;
+    for(let year in data){
+      for(let month in data[year]){
+        for(let day in data[year][month]){
+          let days_mood = data[year][month][day]
+          total_number_of_days++
+          sum_moods += days_mood
+        }
+      }
+    }
+    return { num_days : total_number_of_days, average_mood : sum_moods / total_number_of_days }
   }
+
+  const statues = {
+    ...countValues(),
+    time_remaining: `${23-now.getHours()}hrs : ${60-now.getMinutes()}min `,
+  };
 
   async function handleSetMood(mood){
     // update the current state
     // update the global state
     // update the firebase
 
-    const now = new Date();
+    
     const day = now.getDate(); 
     const month = now.getMonth();
     const year = now.getFullYear();
 
     try {
-    const currData = {...userDataObj}
+    const newData = {...userDataObj}
 
     if(!newData?.[year]){
       newData[year]={}
@@ -56,11 +75,7 @@ const Dashboard = () => {
   }
   }
 
-  const statues = {
-    num_days: 14,
-    time_remaining: '13:14:22',
-    date: (new Date()).toDateString(),
-  };
+ 
 
   const moods ={
     '&*@#&': '😭',
@@ -110,8 +125,8 @@ if(!currentUser){
         {Object.keys(statues).map((status, statusIndex) => {    {/* Object.keys(statues); // ['num_days', 'time_remaining', 'date']*/}
           return (
             <div key={statusIndex} className='p-4'>
-              <p className='font-medium uppercase'>{status.replaceAll('_','')}</p>                                    
-              <p className={'py-3 text-base '+fugaz.className}>{statues[status]}</p>
+              <p className='font-medium capitalize text-xs sm:text-sm truncate'>{status.replaceAll('_',' ')}</p>                                    
+              <p className={'text-base sm:text-lg truncate '+ fugaz.className}>{statues[status]}{status === 'num_days' ? ' 🔥 ' : '  '}</p>
             </div>
           );
         })}
@@ -134,7 +149,8 @@ if(!currentUser){
           )
         })}
       </div>
-      <Calender data={data} handleSetMood={handleSetMood}/>
+      <Calender completeData={data} handleSetMood={handleSetMood}/>
+      
     </div>
   );
 };
