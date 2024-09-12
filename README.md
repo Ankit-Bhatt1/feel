@@ -1,6 +1,8 @@
-# ![Feel - Mood Tracker](assets/first.PNG)
+
 
 # Feel - Mood Tracker
+
+# ![Feel - Mood Tracker](assets/first.PNG)
 
 Feel is a user-friendly mood tracking app that helps you log your emotions daily and analyze mood patterns over time. It's designed to give you insights into your emotional well-being.
 
