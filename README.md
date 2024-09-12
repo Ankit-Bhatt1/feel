@@ -13,3 +13,4 @@ Feel is a user-friendly mood tracking app that helps you log your emotions daily
 - **Multiple Mood Options**: Choose from a variety of emoji to accurately represent your feelings.
 - **User-Friendly Calendar**: Navigate through months easily to log or review your moods.
 
+[![Watch the video](https://img.youtube.com/vi/your-video-id/maxresdefault.jpg)](assets/vid.mp4)
