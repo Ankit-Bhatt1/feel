@@ -2,12 +2,30 @@
 import React from 'react'
 import Button from './Button'
 import { useAuth } from '@/context/AuthContext'
+import { usePathname} from 'next/navigation'
+import Link from 'next/link'
 
 const Logout = () => {
-    const {logout} = useAuth();
+    const {logout,currentUser} = useAuth();
+    const pathname = usePathname();
+    // console.log(pathname);
+
+    if(!currentUser){
+      return null;
+    }
+
+    if(pathname === '/'){
+      return(
+        <Link href={'/dashboard'}>
+          <Button text="Go to Dashboard" dark/>
+        </Link>
+      )
+    }
+
+
   return (
     <div>
-        <Button text='logout' clickHandler={logout}/>
+        <Button text='Logout' clickHandler={logout}/>
     </div>
   )
 }

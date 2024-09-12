@@ -10,16 +10,16 @@ const CallToAction = () => {
         return(
             <div className='max-w-[600px] mx-auto flex items-center justify-center h-full pt-5'>
             <Link href={'/dashboard'}>
-                <Button className="text-center" text='Go to dashboard'/>
+                <Button text='Go to dashboard' dark/>
             </Link>
             </div> 
         )
     }
 
   return (
-    <div className='py-5 grid grid-cols-2 gap-4 w-fit mx-auto'>
+    <div className='max-w-[600px] mx-auto flex items-center justify-center h-full pt-5'>
         <Link href={'/dashboard'}>
-            <Button text='Login' dark/>
+            <Button text='Login'/>
         </Link>
     </div>
   )
